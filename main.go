@@ -14,22 +14,16 @@ func main() {
 
 	r := chi.NewRouter()
 
-	homeTpl, err := views.Parse(filepath.Join("templates", "home.gohtml"))
-	if err != nil {
-		panic(err)
-	}
+	// home page
+	homeTpl := views.Must(views.Parse(filepath.Join("templates", "home.gohtml")))
 	r.Get("/", controllers.StaticHandler(homeTpl))
 
-	contactTpl, err := views.Parse(filepath.Join("templates", "contact.gohtml"))
-	if err != nil {
-		panic(err)
-	}
+	// contact page
+	contactTpl := views.Must(views.Parse(filepath.Join("templates", "contact.gohtml")))
 	r.Get("/contact", controllers.StaticHandler(contactTpl))
 
-	faqTpl, err := views.Parse(filepath.Join("templates", "faq.gohtml"))
-	if err != nil {
-		panic(err)
-	}
+	// FAQ page
+	faqTpl := views.Must(views.Parse(filepath.Join("templates", "faq.gohtml")))
 	r.Get("/faq", controllers.StaticHandler(faqTpl))
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
