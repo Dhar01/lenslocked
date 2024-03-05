@@ -1,8 +1,9 @@
 package main
 
 import (
-	"html/template"
-	"os"
+	"fmt"
+	// "html/template"
+	// "os"
 )
 
 type User struct {
@@ -13,19 +14,24 @@ type User struct {
 
 func main() {
 
-	t, err := template.ParseFiles("hello.gohtml")
-	if err != nil {
-		panic(err)
-	}
-	user := User{
-		Name:    "John Smith",
-		Age:     22,
-		Address: "Bangladesh",
-	}
-	err = t.Execute(os.Stdout, user)
-	if err != nil {
-		panic(err)
-	}
+	// t, err := template.ParseFiles("hello.gohtml")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// user := User{
+	// 	Name:    "John Smith",
+	// 	Age:     22,
+	// 	Address: "Bangladesh",
+	// }
+	// err = t.Execute(os.Stdout, user)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	Demo()
+	Demo(1)
+	Demo(1, 2, 3)
+
 
 	// scenario
 	// err := CreateUser()
@@ -37,6 +43,13 @@ func main() {
 	// 	log.Println(err)
 	// }
 
+}
+
+func Demo(numbers ...int) {
+	for _, number := range numbers {
+		fmt.Print(number, " ")
+	}
+	fmt.Println()
 }
 
 // // replace
