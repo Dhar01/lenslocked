@@ -16,20 +16,20 @@ func main() {
 
 	// home page
 	// homeTpl := views.Must(views.ParseFs(templates.FS, "home.gohtml", "layout-parts.gohtml"))
-	homeTpl := views.Must(views.ParseFs(templates.FS, "layout-page.gohtml", "home-page.gohtml"))
+	homeTpl := views.Must(views.ParseFs(templates.FS, "home.gohtml", "tailwind.gohtml"))
 	r.Get("/", controllers.StaticHandler(homeTpl))
 
 	// contact page
 	// contactTpl := views.Must(views.ParseFs(templates.FS, "contact.gohtml"))
-	contactTpl := views.Must(views.ParseFs(templates.FS, "layout-page.gohtml", "contact-page.gohtml"))
+	contactTpl := views.Must(views.ParseFs(templates.FS, "contact.gohtml", "tailwind.gohtml"))
 	r.Get("/contact", controllers.StaticHandler(contactTpl))
 
 	// FAQ page
 
-	// faqTpl := views.Must(views.ParseFs(templates.FS, "faq.gohtml"))
-	// r.Get("/faq", controllers.StaticHandler(faqTpl))
+	faqTpl := views.Must(views.ParseFs(templates.FS, "faq.gohtml", "tailwind.gohtml"))
+	r.Get("/faq", controllers.StaticHandler(faqTpl))
 
-	r.Get("/faq", controllers.FAQ(views.Must(views.ParseFs(templates.FS, "faq.gohtml"))))
+	// r.Get("/faq", controllers.FAQ(views.Must(views.ParseFs(templates.FS, "faq.gohtml"))))
 
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Page not found", http.StatusNotFound)
